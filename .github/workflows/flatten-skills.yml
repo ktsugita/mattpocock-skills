@@ -19,7 +19,7 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Flatten skills and setup plugin.json
+      - name: Flatten skills, setup plugin.json and banner
         run: |
           python3 -c "
           import os, shutil
@@ -38,6 +38,24 @@ jobs:
 
           if os.path.exists('.claude-plugin/plugin.json'):
               shutil.copy('.claude-plugin/plugin.json', 'plugin.json')
+
+          if os.path.exists('README.md'):
+              with open('README.md', 'r', encoding='utf-8') as f:
+                  readme_content = f.read()
+              banner = '''# Matt Pocock Skills (Antigravity CLI Edition)
+
+> [!NOTE]
+> This branch is automatically flattened for Antigravity CLI (\`agy\`).
+>
+> \`\`\`bash
+> agy plugin install https://github.com/ktsugita/mattpocock-skills/tree/agy mattpocock-skills
+> \`\`\`
+
+---
+
+'''
+              with open('README.md', 'w', encoding='utf-8') as f:
+                  f.write(banner + readme_content)
           "
 
       - name: Push to agy branch
