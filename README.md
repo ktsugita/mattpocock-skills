@@ -1,3 +1,14 @@
+# Matt Pocock Skills (Antigravity CLI Edition)
+
+> [!NOTE]
+> This branch is automatically flattened for Antigravity CLI (`agy`).
+>
+> ```bash
+> agy plugin install https://github.com/ktsugita/mattpocock-skills/tree/agy mattpocock-skills
+> ```
+
+---
+
 <p>
   <a href="https://www.aihero.dev/s/skills-newsletter">
     <picture>
