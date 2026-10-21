@@ -1,0 +1,16 @@
+[tasks."sync:fetch"]
+description = "upstream の更新を取得し、取り込まれる差分を表示する"
+run = [
+  "git fetch upstream",
+  "git diff main...upstream/main --stat",
+]
+
+[tasks."sync:merge"]
+description = "upstream/main を main にマージする"
+depends = ["sync:fetch"]
+run = "git merge --no-edit upstream/main"
+
+[tasks.sync]
+description = "upstream を main に取り込み、origin に push する（agy は Actions が自動更新）"
+depends = ["sync:merge"]
+run = "git push origin main"
